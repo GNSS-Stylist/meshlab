@@ -300,9 +300,15 @@ std::vector<MeshModel*> loadMLP(
 			while (!raster.isNull())
 			{
 				//return true;
-				md.addNewRaster();
+                bool visible = true;
+
+                if (raster.attributes().contains("visible"))
+                    visible = (raster.attributes().namedItem("visible").nodeValue().toInt() == 1);
+
+                md.addNewRaster(visible);
 				QString labelRaster = raster.attributes().namedItem("label").nodeValue();
 				md.rm()->setLabel(labelRaster);
+
 				QDomNode sh = raster.firstChild();
 				ReadShotFromQDomNode(md.rm()->shot, sh);
 

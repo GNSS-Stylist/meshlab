@@ -149,7 +149,7 @@ public:
 	MeshIterator eraseMesh(MeshIterator it);
 
 	///add a new raster model
-	RasterModel *addNewRaster(/*QString rasterName*/);
+    RasterModel *addNewRaster(const bool visible = true);
 
 	///remove the raster from the list and delete it from memory
 	bool delRaster(unsigned int id);

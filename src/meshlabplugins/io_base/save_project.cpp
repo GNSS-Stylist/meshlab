@@ -75,6 +75,7 @@ QDomElement rasterModelToXML(const RasterModel& mp, QDomDocument &doc, const QSt
 {
 	QDomElement rasterElem = doc.createElement("MLRaster");
 	rasterElem.setAttribute("label", mp.label());
+    rasterElem.setAttribute("visible", mp.isVisible());
 	if (binary)
 		rasterElem.appendChild(WriteShotToQDomNodeBinary(mp.shot, doc));
 	else

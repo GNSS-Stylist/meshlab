@@ -380,13 +380,14 @@ MeshDocument::MeshIterator MeshDocument::eraseMesh(MeshIterator it)
 	return meshList.erase(it);
 }
 
-RasterModel * MeshDocument::addNewRaster(/*QString fullPathFilename*/)
+RasterModel * MeshDocument::addNewRaster(const bool visible)
 {
 	QFileInfo info(fullPathFilename);
 	QString newLabel=info.fileName();
 
 	rasterList.push_back(RasterModel(newRasterId(), newLabel));
 	RasterModel& newRaster = rasterList.back();
+    newRaster.setVisible(visible);
 
 	this->setCurrentRaster(newRaster.id());
 
